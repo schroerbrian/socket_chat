@@ -30,19 +30,16 @@
 
     form.submit(function(e) {
       e.preventDefault();
-      alert(message.val());
-
-      socket.emit('send message', message.val());
-
+      socket.emit('send message', message.val()); //tranmistting whatever is in the search field 
+      message.val(""); 														//and trasmitting it over the socket that is loaded when the page is loaded
     });
 
+    //receive data
+    socket.on('new message', function(data) {
+    	chat.append(data + "<br>"); 
+    });
 
   });
-
-
-
-
-
 
 
   </script>
