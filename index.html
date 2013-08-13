@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+    #chat {
+      height: 500px;
+      border: 2px solid black;
+    }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+
+<body>
+  <!-- form for sending response -->
+  <form id="send-message">
+    <input size="35" id="message"></input>
+    <input type="submit"></input>
+  </form>
+  <div id="chat"></div>
+  <script>
+  $(function() {
+    //create socket obect
+    var socket = io.connect();
+
+    //grab variables to work with
+    var form = $("#send-message");
+    var message = $("#message");
+    var chat = $("#chat");
+
+    form.submit(function(e) {
+      e.preventDefault();
+      alert(message.val());
+
+      socket.emit('send message', message.val());
+
+    });
+
+
+  });
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>
